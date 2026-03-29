@@ -1,0 +1,1908 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>OTFiles 的小站 | OTFiles 的小站</title><meta name="author" content="OTFiles"><meta name="copyright" content="OTFiles"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2048游戏              :root {             --bg-color: #faf8ef;             --grid-bg: #bbada0;             --text-color: #776e65;             --cell-bg: #eee4da;             --cell-2: #">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OTFiles 的小站">
+<meta property="og:url" content="https://otfiles.github.io/2048/index.html">
+<meta property="og:site_name" content="OTFiles 的小站">
+<meta property="og:description" content="2048游戏              :root {             --bg-color: #faf8ef;             --grid-bg: #bbada0;             --text-color: #776e65;             --cell-bg: #eee4da;             --cell-2: #">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://otfiles.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-03-15T04:40:11.446Z">
+<meta property="article:modified_time" content="2026-03-15T04:40:11.446Z">
+<meta property="article:author" content="OTFiles">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://otfiles.github.io/img/butterfly-icon.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://otfiles.github.io/2048/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'OTFiles 的小站',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><meta name="generator" content="Hexo 7.3.0"><script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"></noscript></head><body><div id="web_bg" style="background-image: url(/img/bg1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page fixed" id="page-header" style="background-image: url(/img/bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OTFiles 的小站</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048游戏</title>
+    <style>
+        :root {
+            --bg-color: #faf8ef;
+            --grid-bg: #bbada0;
+            --text-color: #776e65;
+            --cell-bg: #eee4da;
+            --cell-2: #eee4da;
+            --cell-4: #ede0c8;
+            --cell-8: #f2b179;
+            --cell-16: #f59563;
+            --cell-32: #f67c5f;
+            --cell-64: #f65e3b;
+            --cell-128: #edcf72;
+            --cell-256: #edcc61;
+            --cell-512: #edc850;
+            --cell-1024: #edc53f;
+            --cell-2048: #edc22e;
+            --cell-text-light: #f9f6f2;
+            --cell-text-dark: #776e65;
+            --border-radius: 6px;
+            --transition-speed: 0.15s;
+        }
+
+        .dark-mode {
+            --bg-color: #2d2d2d;
+            --grid-bg: #3c3a32;
+            --text-color: #d8d4cf;
+            --cell-bg: #3c3a32;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            touch-action: none;
+        }
+
+        .glass-mode {
+            --bg-color: rgba(250, 248, 239, 0.8);
+            --grid-bg: rgba(187, 173, 160, 0.7);
+            --text-color: #776e65;
+            --cell-bg: rgba(238, 228, 218, 0.5);
+        }
+
+        .dark-mode.glass-mode {
+            --bg-color: rgba(45, 45, 45, 0.8);
+            --grid-bg: rgba(60, 58, 50, 0.7);
+            --text-color: #d8d4cf;
+            --cell-bg: rgba(60, 58, 50, 0.5);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+        }
+
+        .scores {
+            display: flex;
+            gap: 10px;
+        }
+
+        .score-box {
+            background-color: var(--grid-bg);
+            color: white;
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .score-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .score-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        button {
+            background-color: var(--grid-bg);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .glass-mode button {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .game-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 10px;
+            padding: 10px;
+            background-color: var(--grid-bg);
+            border-radius: var(--border-radius);
+            aspect-ratio: 1/1;
+            position: relative;
+        }
+
+        .glass-mode .grid-container {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(187, 173, 160, 0.7);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .grid-cell {
+            background-color: var(--cell-bg);
+            border-radius: var(--border-radius);
+        }
+
+        .glass-mode .grid-cell {
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tile {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            border-radius: var(--border-radius);
+            transition: all var(--transition-speed) ease-in-out;
+            z-index: 10;
+        }
+
+        /* 默认模式样式 */
+        .tile-2 { background-color: var(--cell-2); color: var(--cell-text-dark); }
+        .tile-4 { background-color: var(--cell-4); color: var(--cell-text-dark); }
+        .tile-8 { background-color: var(--cell-8); color: var(--cell-text-light); }
+        .tile-16 { background-color: var(--cell-16); color: var(--cell-text-light); }
+        .tile-32 { background-color: var(--cell-32); color: var(--cell-text-light); }
+        .tile-64 { background-color: var(--cell-64); color: var(--cell-text-light); }
+        .tile-128 { background-color: var(--cell-128); color: var(--cell-text-light); }
+        .tile-256 { background-color: var(--cell-256); color: var(--cell-text-light); }
+        .tile-512 { background-color: var(--cell-512); color: var(--cell-text-light); }
+        .tile-1024 { background-color: var(--cell-1024); color: var(--cell-text-light); }
+        .tile-2048 { background-color: var(--cell-2048); color: var(--cell-text-light); }
+
+        /* 液态玻璃模式样式 */
+        .glass-mode .tile {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-mode .tile-2 { color: #333; }
+        .glass-mode .tile-4 { color: #333; }
+        .glass-mode .tile-8 { 
+            color: white;
+            background: linear-gradient(135deg, rgba(255, 179, 71, 0.7), rgba(255, 140, 26, 0.8));
+        }
+        .glass-mode .tile-16 { 
+            color: white;
+            background: linear-gradient(135deg, rgba(255, 149, 63, 0.7), rgba(255, 111, 0, 0.8));
+        }
+        .glass-mode .tile-32 { 
+            color: white;
+            background: linear-gradient(135deg, rgba(255, 124, 67, 0.7), rgba(255, 81, 0, 0.8));
+        }
+        .glass-mode .tile-64 { 
+            color: white;
+            background: linear-gradient(135deg, rgba(255, 94, 58, 0.7), rgba(255, 45, 0, 0.8));
+        }
+        .glass-mode .tile-128 { 
+            color: white;
+            background: linear-gradient(135deg, rgba(237, 207, 114, 0.7), rgba(237, 194, 46, 0.8));
+        }
+        .glass-mode .tile-256 { 
+            color: white;
+            background: linear-gradient(135deg, rgba(237, 204, 97, 0.7), rgba(237, 186, 46, 0.8));
+        }
+        .glass-mode .tile-512 { 
+            color: white;
+            background: linear-gradient(135deg, rgba(237, 200, 80, 0.7), rgba(237, 178, 46, 0.8));
+        }
+        .glass-mode .tile-1024 { 
+            color: white;
+            background: linear-gradient(135deg, rgba(237, 197, 63, 0.7), rgba(237, 170, 46, 0.8));
+        }
+        .glass-mode .tile-2048 { 
+            color: white;
+            background: linear-gradient(135deg, rgba(237, 194, 46, 0.7), rgba(237, 162, 46, 0.8));
+        }
+
+        .new-tile {
+            animation: appear 0.2s;
+        }
+
+        .merged-tile {
+            animation: pop 0.2s;
+        }
+
+        /* 液态玻璃模式动画 */
+        .glass-mode .new-tile {
+            animation: glass-appear 0.3s;
+        }
+
+        .glass-mode .merged-tile {
+            animation: glass-pop 0.3s;
+        }
+
+        @keyframes appear {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* 液态玻璃模式动画 */
+        @keyframes glass-appear {
+            0% { 
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            70% { 
+                transform: scale(1.1) rotate(5deg);
+                opacity: 0.8;
+            }
+            100% { 
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes glass-pop {
+            0% { 
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+            }
+            50% { 
+                transform: scale(1.3);
+                box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.5);
+            }
+            100% { 
+                transform: scale(1);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        .game-message {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(238, 228, 218, 0.73);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            z-index: 100;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .glass-mode .game-message {
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .game-message p {
+            margin-bottom: 20px;
+        }
+
+        .instructions {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        /* 作弊器样式 */
+        .cheat-panel {
+            background-color: var(--grid-bg);
+            color: white;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 10px;
+            width: 100%;
+            display: none;
+        }
+
+        .glass-mode .cheat-panel {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(187, 173, 160, 0.7);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cheat-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .cheat-input {
+            flex: 1;
+            min-width: 60px;
+            padding: 8px;
+            border-radius: var(--border-radius);
+            border: none;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .cheat-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .cheat-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cheat-buttons button {
+            flex: 1;
+        }
+
+        /* 暴力破解面板样式 */
+        .solver-panel {
+            background-color: var(--grid-bg);
+            color: white;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 10px;
+            width: 100%;
+            display: none;
+        }
+
+        .glass-mode .solver-panel {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(187, 173, 160, 0.7);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .solver-info {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+        }
+
+        .solver-progress-container {
+            margin-bottom: 15px;
+        }
+
+        .solver-progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .solver-progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        .solver-progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .solver-stats {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .solver-status {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .solver-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .solver-buttons button {
+            flex: 1;
+        }
+
+        .solving {
+            background-color: #ff9800 !important;
+        }
+
+        @media (max-width: 500px) {
+            h1 { font-size: 2rem; }
+            .score-box { min-width: 80px; padding: 8px 12px; }
+            button { padding: 8px 16px; font-size: 0.9rem; }
+            .cheat-controls, .solver-buttons { flex-direction: column; }
+        }
+    </style>
+
+
+    <div class="container">
+        <header>
+            <h1>2048</h1>
+            <div class="scores">
+                <div class="score-box">
+                    <div class="score-title">分数</div>
+                    <div class="score-value" id="score">0</div>
+                </div>
+                <div class="score-box">
+                    <div class="score-title">最高分</div>
+                    <div class="score-value" id="best-score">0</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="controls">
+            <button id="new-game">新游戏</button>
+            <button id="dark-mode-toggle">黑夜模式</button>
+            <button id="animation-mode-toggle">液态玻璃</button>
+            <button id="undo">撤销</button>
+            <button id="cheat-toggle">作弊器</button>
+            <button id="solver-toggle">暴力破解</button>
+        </div>
+        
+        <!-- 作弊器面板 -->
+        <div class="cheat-panel" id="cheat-panel">
+            <div class="cheat-controls">
+                <input type="number" id="cheat-row" class="cheat-input" placeholder="行 (0-3)" min="0" max="3">
+                <input type="number" id="cheat-col" class="cheat-input" placeholder="列 (0-3)" min="0" max="3">
+                <select id="cheat-value" class="cheat-input">
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="16">16</option>
+                    <option value="32">32</option>
+                    <option value="64">64</option>
+                    <option value="128">128</option>
+                    <option value="256">256</option>
+                    <option value="512">512</option>
+                    <option value="1024">1024</option>
+                    <option value="2048">2048</option>
+                </select>
+            </div>
+            <div class="cheat-buttons">
+                <button id="cheat-add">添加方块</button>
+                <button id="cheat-remove">移除方块</button>
+                <button id="cheat-clear">清空棋盘</button>
+                <button id="cheat-win">直接胜利</button>
+            </div>
+        </div>
+        
+        <!-- 暴力破解面板 -->
+        <div class="solver-panel" id="solver-panel">
+            <div class="solver-info">
+                <div class="solver-status" id="solver-status">等待开始...</div>
+                <div class="solver-stats" id="solver-stats">
+                    已评估: 0 状态<br>
+                    搜索深度: 0<br>
+                    找到路径: 否
+                </div>
+                <div class="solver-progress-container">
+                    <div class="solver-progress-bar">
+                        <div class="solver-progress-fill" id="solver-progress-fill"></div>
+                    </div>
+                    <div class="solver-progress-text">
+                        <span id="progress-current">0%</span>
+                        <span id="progress-estimated">预计: --</span>
+                    </div>
+                </div>
+            </div>
+            <div class="solver-buttons">
+                <button id="solver-start">开始破解</button>
+                <button id="solver-stop" disabled="">停止</button>
+                <button id="solver-execute" disabled="">执行路径</button>
+            </div>
+        </div>
+        
+        <div class="game-container">
+            <div class="grid-container" id="grid-container"></div>
+            <div class="game-message" id="game-message">
+                <p id="message-text"></p>
+                <button id="try-again">再试一次</button>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <p>使用 <strong>方向键</strong> 或 <strong>滑动</strong> 来移动方块。当两个相同数字的方块碰撞时，它们会合并成一个！</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 游戏状态
+            const gridSize = 4;
+            let grid = [];
+            let score = 0;
+            let bestScore = localStorage.getItem('bestScore') || 0;
+            let gameOver = false;
+            let moved = false;
+            let history = [];
+            let touchStartX, touchStartY;
+            let newTiles = []; // 存储新生成的方块位置
+            let mergedTiles = []; // 存储合并的方块位置
+            
+            // 暴力破解相关状态
+            let isSolving = false;
+            let solverPath = [];
+            let solverStats = {
+                evaluated: 0,
+                maxDepthReached: 0,
+                bestPathLength: 0,
+                startTime: 0,
+                progress: 0
+            };
+            
+            // DOM元素
+            const gridContainer = document.getElementById('grid-container');
+            const scoreDisplay = document.getElementById('score');
+            const bestScoreDisplay = document.getElementById('best-score');
+            const newGameButton = document.getElementById('new-game');
+            const undoButton = document.getElementById('undo');
+            const gameMessage = document.getElementById('game-message');
+            const messageText = document.getElementById('message-text');
+            const tryAgainButton = document.getElementById('try-again');
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const animationModeToggle = document.getElementById('animation-mode-toggle');
+            const cheatToggle = document.getElementById('cheat-toggle');
+            const cheatPanel = document.getElementById('cheat-panel');
+            const cheatAddButton = document.getElementById('cheat-add');
+            const cheatRemoveButton = document.getElementById('cheat-remove');
+            const cheatClearButton = document.getElementById('cheat-clear');
+            const cheatWinButton = document.getElementById('cheat-win');
+            const cheatRowInput = document.getElementById('cheat-row');
+            const cheatColInput = document.getElementById('cheat-col');
+            const cheatValueSelect = document.getElementById('cheat-value');
+            
+            // 暴力破解相关DOM元素
+            const solverToggle = document.getElementById('solver-toggle');
+            const solverPanel = document.getElementById('solver-panel');
+            const solverStartButton = document.getElementById('solver-start');
+            const solverStopButton = document.getElementById('solver-stop');
+            const solverExecuteButton = document.getElementById('solver-execute');
+            const solverStatus = document.getElementById('solver-status');
+            const solverStatsDisplay = document.getElementById('solver-stats');
+            const solverProgressFill = document.getElementById('solver-progress-fill');
+            const progressCurrent = document.getElementById('progress-current');
+            const progressEstimated = document.getElementById('progress-estimated');
+            
+            // 初始化游戏
+            function initGame() {
+                createGrid();
+                resetGame();
+                updateScore();
+                
+                // 事件监听
+                document.addEventListener('keydown', handleKeyPress);
+                gridContainer.addEventListener('touchstart', handleTouchStart, { passive: false });
+                gridContainer.addEventListener('touchmove', handleTouchMove, { passive: false });
+                gridContainer.addEventListener('touchend', handleTouchEnd, { passive: false });
+                newGameButton.addEventListener('click', resetGame);
+                undoButton.addEventListener('click', undoMove);
+                tryAgainButton.addEventListener('click', resetGame);
+                darkModeToggle.addEventListener('click', toggleDarkMode);
+                animationModeToggle.addEventListener('click', toggleAnimationMode);
+                cheatToggle.addEventListener('click', toggleCheatPanel);
+                cheatAddButton.addEventListener('click', addTileCheat);
+                cheatRemoveButton.addEventListener('click', removeTileCheat);
+                cheatClearButton.addEventListener('click', clearGridCheat);
+                cheatWinButton.addEventListener('click', winGameCheat);
+                
+                // 暴力破解事件监听
+                solverToggle.addEventListener('click', toggleSolverPanel);
+                solverStartButton.addEventListener('click', startSolver);
+                solverStopButton.addEventListener('click', stopSolver);
+                solverExecuteButton.addEventListener('click', executeSolverPath);
+                
+                // 初始渲染
+                renderTiles();
+            }
+            
+            // 创建网格
+            function createGrid() {
+                gridContainer.innerHTML = '';
+                
+                for (let i = 0; i < gridSize * gridSize; i++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'grid-cell';
+                    gridContainer.appendChild(cell);
+                }
+            }
+            
+            // 重置游戏
+            function resetGame() {
+                grid = Array(gridSize).fill().map(() => Array(gridSize).fill(0));
+                score = 0;
+                gameOver = false;
+                moved = false;
+                history = [];
+                newTiles = [];
+                mergedTiles = [];
+                
+                // 重置暴力破解状态
+                solverPath = [];
+                solverStats = {
+                    evaluated: 0,
+                    maxDepthReached: 0,
+                    bestPathLength: 0,
+                    startTime: 0,
+                    progress: 0
+                };
+                
+                updateSolverStats();
+                updateScore();
+                clearTiles();
+                gameMessage.style.display = 'none';
+                
+                // 添加两个初始方块
+                addRandomTile();
+                addRandomTile();
+                renderTiles();
+            }
+            
+            // 更新分数显示
+            function updateScore() {
+                scoreDisplay.textContent = score;
+                bestScoreDisplay.textContent = bestScore;
+            }
+            
+            // 清除所有方块
+            function clearTiles() {
+                const tiles = document.querySelectorAll('.tile');
+                tiles.forEach(tile => tile.remove());
+            }
+            
+            // 添加随机方块
+            function addRandomTile() {
+                const emptyCells = [];
+                
+                // 找到所有空单元格
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        if (grid[r][c] === 0) {
+                            emptyCells.push({r, c});
+                        }
+                    }
+                }
+                
+                if (emptyCells.length > 0) {
+                    // 随机选择一个空单元格
+                    const {r, c} = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                    
+                    // 90%概率生成2，10%概率生成4
+                    grid[r][c] = Math.random() < 0.9 ? 2 : 4;
+                    
+                    // 记录新生成的方块位置
+                    newTiles.push({r, c});
+                    
+                    return {r, c, value: grid[r][c]};
+                }
+                
+                return null;
+            }
+            
+            // 渲染所有方块
+            function renderTiles() {
+                clearTiles();
+                
+                const containerWidth = gridContainer.clientWidth;
+                const containerHeight = gridContainer.clientHeight;
+                const padding = 10;
+                const gap = 10;
+                const cellSize = (Math.min(containerWidth, containerHeight) - (padding * 2) - (gap * (gridSize - 1))) / gridSize;
+                
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        if (grid[r][c] !== 0) {
+                            const tile = document.createElement('div');
+                            const value = grid[r][c];
+                            tile.className = `tile tile-${value}`;
+                            tile.textContent = value;
+                            
+                            // 计算位置和大小
+                            tile.style.width = `${cellSize}px`;
+                            tile.style.height = `${cellSize}px`;
+                            tile.style.top = `${padding + r * (cellSize + gap)}px`;
+                            tile.style.left = `${padding + c * (cellSize + gap)}px`;
+                            
+                            // 动态调整字体大小
+                            const fontSize = Math.min(cellSize * 0.4, 36);
+                            tile.style.fontSize = `${fontSize}px`;
+                            
+                            // 为新生成的方块添加动画类
+                            if (newTiles.some(pos => pos.r === r && pos.c === c)) {
+                                tile.classList.add('new-tile');
+                            }
+                            
+                            // 为合并的方块添加动画类
+                            if (mergedTiles.some(pos => pos.r === r && pos.c === c)) {
+                                tile.classList.add('merged-tile');
+                            }
+                            
+                            gridContainer.appendChild(tile);
+                        }
+                    }
+                }
+                
+                // 清空动画记录
+                newTiles = [];
+                mergedTiles = [];
+            }
+            
+            // 处理键盘输入
+            function handleKeyPress(event) {
+                if (gameOver || isSolving) return;
+                
+                // 保存移动前的状态
+                saveState();
+                
+                let direction;
+                switch(event.key) {
+                    case 'ArrowUp':
+                        direction = 'up';
+                        break;
+                    case 'ArrowDown':
+                        direction = 'down';
+                        break;
+                    case 'ArrowLeft':
+                        direction = 'left';
+                        break;
+                    case 'ArrowRight':
+                        direction = 'right';
+                        break;
+                    default:
+                        return; // 忽略其他按键
+                }
+                
+                event.preventDefault();
+                
+                // 执行移动
+                moveTiles(direction);
+                
+                // 如果有移动，添加新方块并检查游戏状态
+                if (moved) {
+                    addRandomTile();
+                    renderTiles();
+                    checkGameOver();
+                    updateScore();
+                }
+            }
+            
+            // 保存游戏状态
+            function saveState() {
+                // 深拷贝当前网格和分数
+                const gridCopy = grid.map(row => [...row]);
+                history.push({
+                    grid: gridCopy,
+                    score: score
+                });
+                
+                // 只保留最近10次移动
+                if (history.length > 10) {
+                    history.shift();
+                }
+            }
+            
+            // 撤销移动
+            function undoMove() {
+                if (history.length > 0 && !isSolving) {
+                    const state = history.pop();
+                    grid = state.grid;
+                    score = state.score;
+                    renderTiles();
+                    updateScore();
+                    gameOver = false;
+                    gameMessage.style.display = 'none';
+                }
+            }
+            
+            // 移动方块
+            function moveTiles(direction) {
+                moved = false;
+                
+                // 根据方向旋转网格，统一处理为向左移动
+                let rotatedGrid = rotateGrid(direction);
+                
+                // 移动和合并
+                for (let r = 0; r < gridSize; r++) {
+                    // 过滤掉0
+                    let row = rotatedGrid[r].filter(val => val !== 0);
+                    
+                    // 合并相同数字
+                    for (let c = 0; c < row.length - 1; c++) {
+                        if (row[c] === row[c + 1]) {
+                            row[c] *= 2;
+                            row[c + 1] = 0;
+                            score += row[c];
+                            moved = true;
+                            
+                            // 记录合并的位置
+                            // 根据旋转方向计算原始位置
+                            let originalPos = getOriginalPosition(r, c, direction);
+                            mergedTiles.push(originalPos);
+                        }
+                    }
+                    
+                    // 再次过滤掉0
+                    row = row.filter(val => val !== 0);
+                    
+                    // 用0填充剩余位置
+                    while (row.length < gridSize) {
+                        row.push(0);
+                    }
+                    
+                    // 检查是否有移动
+                    if (!moved) {
+                        for (let c = 0; c < gridSize; c++) {
+                            if (rotatedGrid[r][c] !== row[c]) {
+                                moved = true;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    rotatedGrid[r] = row;
+                }
+                
+                // 旋转回原始方向
+                grid = rotateGridBack(rotatedGrid, direction);
+                
+                // 更新最高分
+                if (score > bestScore) {
+                    bestScore = score;
+                    localStorage.setItem('bestScore', bestScore);
+                }
+            }
+            
+            // 根据方向旋转网格
+            function rotateGrid(direction) {
+                const rotatedGrid = Array(gridSize).fill().map(() => Array(gridSize).fill(0));
+                
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        switch(direction) {
+                            case 'up':
+                                rotatedGrid[r][c] = grid[c][gridSize - 1 - r];
+                                break;
+                            case 'down':
+                                rotatedGrid[r][c] = grid[gridSize - 1 - c][r];
+                                break;
+                            case 'left':
+                                rotatedGrid[r][c] = grid[r][c];
+                                break;
+                            case 'right':
+                                rotatedGrid[r][c] = grid[r][gridSize - 1 - c];
+                                break;
+                        }
+                    }
+                }
+                
+                return rotatedGrid;
+            }
+            
+            // 将网格旋转回原始方向
+            function rotateGridBack(rotatedGrid, direction) {
+                const originalGrid = Array(gridSize).fill().map(() => Array(gridSize).fill(0));
+                
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        switch(direction) {
+                            case 'up':
+                                originalGrid[c][gridSize - 1 - r] = rotatedGrid[r][c];
+                                break;
+                            case 'down':
+                                originalGrid[gridSize - 1 - c][r] = rotatedGrid[r][c];
+                                break;
+                            case 'left':
+                                originalGrid[r][c] = rotatedGrid[r][c];
+                                break;
+                            case 'right':
+                                originalGrid[r][gridSize - 1 - c] = rotatedGrid[r][c];
+                                break;
+                        }
+                    }
+                }
+                
+                return originalGrid;
+            }
+            
+            // 获取原始位置（用于记录合并动画）
+            function getOriginalPosition(r, c, direction) {
+                switch(direction) {
+                    case 'up':
+                        return {r: c, c: gridSize - 1 - r};
+                    case 'down':
+                        return {r: gridSize - 1 - c, c: r};
+                    case 'left':
+                        return {r: r, c: c};
+                    case 'right':
+                        return {r: r, c: gridSize - 1 - c};
+                }
+            }
+            
+            // 检查游戏是否结束
+            function checkGameOver() {
+                // 检查是否有空单元格
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        if (grid[r][c] === 0) {
+                            return;
+                        }
+                    }
+                }
+                
+                // 检查是否有可合并的相邻方块
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        const current = grid[r][c];
+                        
+                        // 检查右侧
+                        if (c < gridSize - 1 && grid[r][c + 1] === current) {
+                            return;
+                        }
+                        
+                        // 检查下方
+                        if (r < gridSize - 1 && grid[r + 1][c] === current) {
+                            return;
+                        }
+                    }
+                }
+                
+                // 游戏结束
+                gameOver = true;
+                messageText.textContent = '游戏结束!';
+                gameMessage.style.display = 'flex';
+            }
+            
+            // 触摸事件处理
+            function handleTouchStart(event) {
+                if (isSolving) return;
+                
+                const touch = event.touches[0];
+                touchStartX = touch.clientX;
+                touchStartY = touch.clientY;
+                event.preventDefault();
+            }
+            
+            function handleTouchMove(event) {
+                if (!touchStartX || !touchStartY || gameOver || isSolving) return;
+                
+                const touch = event.touches[0];
+                const touchEndX = touch.clientX;
+                const touchEndY = touch.clientY;
+                
+                const diffX = touchEndX - touchStartX;
+                const diffY = touchEndY - touchStartY;
+                
+                // 判断滑动方向
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    // 水平滑动
+                    let direction = diffX > 0 ? 'right' : 'left';
+                    
+                    // 保存移动前的状态
+                    saveState();
+                    
+                    // 执行移动
+                    moveTiles(direction);
+                    
+                    // 如果有移动，添加新方块并检查游戏状态
+                    if (moved) {
+                        addRandomTile();
+                        renderTiles();
+                        checkGameOver();
+                        updateScore();
+                    }
+                    
+                    touchStartX = null;
+                    touchStartY = null;
+                    
+                    event.preventDefault();
+                } else if (Math.abs(diffY) > 30) {
+                    // 垂直滑动
+                    let direction = diffY > 0 ? 'down' : 'up';
+                    
+                    // 保存移动前的状态
+                    saveState();
+                    
+                    // 执行移动
+                    moveTiles(direction);
+                    
+                    // 如果有移动，添加新方块并检查游戏状态
+                    if (moved) {
+                        addRandomTile();
+                        renderTiles();
+                        checkGameOver();
+                        updateScore();
+                    }
+                    
+                    touchStartX = null;
+                    touchStartY = null;
+                    
+                    event.preventDefault();
+                }
+            }
+            
+            function handleTouchEnd(event) {
+                touchStartX = null;
+                touchStartY = null;
+                event.preventDefault();
+            }
+            
+            // 切换明暗模式
+            function toggleDarkMode() {
+                document.body.classList.toggle('dark-mode');
+                darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '白昼模式' : '黑夜模式';
+            }
+            
+            // 切换动画模式
+            function toggleAnimationMode() {
+                document.body.classList.toggle('glass-mode');
+                animationModeToggle.textContent = document.body.classList.contains('glass-mode') ? '默认模式' : '液态玻璃';
+                
+                // 重新渲染方块以应用新的样式
+                renderTiles();
+            }
+            
+            // 切换作弊器面板
+            function toggleCheatPanel() {
+                cheatPanel.style.display = cheatPanel.style.display === 'block' ? 'none' : 'block';
+                // 如果打开作弊器面板，关闭暴力破解面板
+                if (cheatPanel.style.display === 'block') {
+                    solverPanel.style.display = 'none';
+                }
+            }
+            
+            // 切换暴力破解面板
+            function toggleSolverPanel() {
+                solverPanel.style.display = solverPanel.style.display === 'block' ? 'none' : 'block';
+                // 如果打开暴力破解面板，关闭作弊器面板
+                if (solverPanel.style.display === 'block') {
+                    cheatPanel.style.display = 'none';
+                }
+            }
+            
+            // 作弊器功能 - 添加方块
+            function addTileCheat() {
+                const row = parseInt(cheatRowInput.value);
+                const col = parseInt(cheatColInput.value);
+                const value = parseInt(cheatValueSelect.value);
+                
+                if (isNaN(row) || isNaN(col) || row < 0 || row >= gridSize || col < 0 || col >= gridSize) {
+                    alert('请输入有效的行和列 (0-3)');
+                    return;
+                }
+                
+                // 保存状态以便撤销
+                saveState();
+                
+                // 添加方块
+                grid[row][col] = value;
+                newTiles.push({r: row, c: col});
+                
+                // 重新渲染
+                renderTiles();
+                checkGameOver();
+            }
+            
+            // 作弊器功能 - 移除方块
+            function removeTileCheat() {
+                const row = parseInt(cheatRowInput.value);
+                const col = parseInt(cheatColInput.value);
+                
+                if (isNaN(row) || isNaN(col) || row < 0 || row >= gridSize || col < 0 || col >= gridSize) {
+                    alert('请输入有效的行和列 (0-3)');
+                    return;
+                }
+                
+                // 保存状态以便撤销
+                saveState();
+                
+                // 移除方块
+                grid[row][col] = 0;
+                
+                // 重新渲染
+                renderTiles();
+            }
+            
+            // 作弊器功能 - 清空棋盘
+            function clearGridCheat() {
+                // 保存状态以便撤销
+                saveState();
+                
+                // 清空棋盘
+                grid = Array(gridSize).fill().map(() => Array(gridSize).fill(0));
+                
+                // 重新渲染
+                renderTiles();
+                gameOver = false;
+                gameMessage.style.display = 'none';
+            }
+            
+            // 作弊器功能 - 直接胜利
+            function winGameCheat() {
+                // 保存状态以便撤销
+                saveState();
+                
+                // 清空棋盘
+                grid = Array(gridSize).fill().map(() => Array(gridSize).fill(0));
+                
+                // 放置一个2048方块
+                grid[0][0] = 2048;
+                newTiles.push({r: 0, c: 0});
+                
+                // 重新渲染
+                renderTiles();
+                gameOver = false;
+                gameMessage.style.display = 'none';
+                
+                // 显示胜利消息
+                messageText.textContent = '恭喜获胜!';
+                gameMessage.style.display = 'flex';
+            }
+            
+            // ========== 暴力破解功能 ==========
+            
+            // 更新破解统计信息
+            function updateSolverStats() {
+                solverStatsDisplay.innerHTML = 
+                    `已评估: ${solverStats.evaluated.toLocaleString()} 状态<br>
+                     搜索深度: ${solverStats.maxDepthReached}<br>
+                     找到路径: ${solverPath.length > 0 ? '是 (' + solverPath.length + '步)' : '否'}`;
+                
+                // 更新进度条
+                solverProgressFill.style.width = `${solverStats.progress}%`;
+                progressCurrent.textContent = `${solverStats.progress.toFixed(1)}%`;
+                
+                // 更新预计时间
+                if (solverStats.startTime > 0 && solverStats.progress > 0) {
+                    const elapsed = (Date.now() - solverStats.startTime) / 1000; // 秒
+                    const estimatedTotal = elapsed / (solverStats.progress / 100);
+                    const remaining = estimatedTotal - elapsed;
+                    
+                    if (remaining > 60) {
+                        progressEstimated.textContent = `预计: ${Math.ceil(remaining / 60)}分钟`;
+                    } else if (remaining > 0) {
+                        progressEstimated.textContent = `预计: ${Math.ceil(remaining)}秒`;
+                    } else {
+                        progressEstimated.textContent = `预计: --`;
+                    }
+                } else {
+                    progressEstimated.textContent = `预计: --`;
+                }
+            }
+            
+            // 开始暴力破解
+            function startSolver() {
+                if (isSolving) return;
+                
+                isSolving = true;
+                solverStartButton.disabled = true;
+                solverStopButton.disabled = false;
+                solverExecuteButton.disabled = true;
+                solverStartButton.textContent = '计算中...';
+                solverStartButton.classList.add('solving');
+                
+                solverPath = [];
+                solverStats = {
+                    evaluated: 0,
+                    maxDepthReached: 0,
+                    bestPathLength: 0,
+                    startTime: Date.now(),
+                    progress: 0
+                };
+                
+                solverStatus.textContent = '正在寻找通往2048的路径...';
+                updateSolverStats();
+                
+                // 使用setTimeout来避免阻塞UI
+                setTimeout(() => {
+                    findWinningPath();
+                }, 100);
+            }
+            
+            // 停止暴力破解
+            function stopSolver() {
+                isSolving = false;
+                solverStartButton.disabled = false;
+                solverStopButton.disabled = true;
+                solverStartButton.textContent = '开始破解';
+                solverStartButton.classList.remove('solving');
+                
+                if (solverPath.length > 0) {
+                    solverExecuteButton.disabled = false;
+                    solverStatus.textContent = `找到通往2048的路径! 长度: ${solverPath.length}步`;
+                } else {
+                    solverStatus.textContent = '已停止，未找到通往2048的路径';
+                }
+            }
+            
+            // 执行找到的路径
+            function executeSolverPath() {
+                if (solverPath.length === 0 || isSolving) return;
+                
+                // 禁用按钮
+                solverStartButton.disabled = true;
+                solverStopButton.disabled = true;
+                solverExecuteButton.disabled = true;
+                solverStatus.textContent = '正在执行路径...';
+                
+                // 执行路径中的每一步
+                executeNextStep(0);
+            }
+            
+            // 递归执行路径中的每一步
+            function executeNextStep(stepIndex) {
+                if (stepIndex >= solverPath.length || gameOver) {
+                    // 执行完成
+                    solverStartButton.disabled = false;
+                    solverExecuteButton.disabled = true;
+                    solverStatus.textContent = '路径执行完成';
+                    
+                    // 检查是否获胜
+                    for (let r = 0; r < gridSize; r++) {
+                        for (let c = 0; c < gridSize; c++) {
+                            if (grid[r][c] >= 2048) {
+                                messageText.textContent = '恭喜获胜!';
+                                gameMessage.style.display = 'flex';
+                                break;
+                            }
+                        }
+                    }
+                    return;
+                }
+                
+                const direction = solverPath[stepIndex];
+                
+                // 保存移动前的状态
+                saveState();
+                
+                // 执行移动
+                moveTiles(direction);
+                
+                // 添加随机方块
+                if (moved) {
+                    addRandomTile();
+                    renderTiles();
+                    checkGameOver();
+                    updateScore();
+                    
+                    // 延迟执行下一步，让用户能看到动画
+                    setTimeout(() => {
+                        executeNextStep(stepIndex + 1);
+                    }, 300);
+                } else {
+                    // 如果这一步没有移动，跳过它
+                    executeNextStep(stepIndex + 1);
+                }
+            }
+            
+            // 寻找通往2048的路径的算法
+            function findWinningPath() {
+                // 创建初始状态
+                const initialState = {
+                    grid: grid.map(row => [...row]),
+                    score: score,
+                    path: [],
+                    depth: 0
+                };
+                
+                // 检查当前是否已经有2048
+                if (has2048(initialState.grid)) {
+                    solverPath = [];
+                    solverStatus.textContent = '当前已经达到2048!';
+                    stopSolver();
+                    return;
+                }
+                
+                // 使用迭代加深的深度优先搜索
+                let maxDepth = 1;
+                const maxMaxDepth = 50; // 最大搜索深度限制
+                
+                function searchDepth() {
+                    if (!isSolving) return;
+                    
+                    solverStatus.textContent = `搜索深度 ${maxDepth}...`;
+                    solverStats.maxDepthReached = maxDepth;
+                    
+                    // 开始深度限制搜索
+                    const result = depthLimitedSearch(initialState, maxDepth);
+                    
+                    if (result && result.found) {
+                        // 找到获胜路径
+                        solverPath = result.path;
+                        solverStats.bestPathLength = solverPath.length;
+                        solverStats.progress = 100;
+                        updateSolverStats();
+                        solverStatus.textContent = `找到通往2048的路径! 长度: ${solverPath.length}步`;
+                        stopSolver();
+                        return;
+                    }
+                    
+                    // 增加深度继续搜索
+                    maxDepth++;
+                    
+                    // 更新进度（基于搜索深度）
+                    solverStats.progress = Math.min(99, (maxDepth / maxMaxDepth) * 100);
+                    updateSolverStats();
+                    
+                    if (maxDepth <= maxMaxDepth) {
+                        // 继续搜索下一层深度
+                        setTimeout(searchDepth, 10);
+                    } else {
+                        // 达到最大深度，但仍然可以继续搜索（无限深度模式）
+                        solverStats.progress = 99.9; // 表示无限搜索
+                        updateSolverStats();
+                        setTimeout(searchDepth, 10);
+                    }
+                }
+                
+                // 开始搜索
+                searchDepth();
+            }
+            
+            // 深度限制搜索
+            function depthLimitedSearch(state, depthLimit) {
+                // 使用栈来避免递归深度限制
+                const stack = [state];
+                let iterations = 0;
+                const maxIterationsPerCall = 10000; // 每次调用最大迭代次数
+                
+                while (stack.length > 0 && isSolving) {
+                    iterations++;
+                    solverStats.evaluated++;
+                    
+                    // 每评估1000次更新一次UI
+                    if (solverStats.evaluated % 1000 === 0) {
+                        // 让出控制权，避免阻塞UI
+                        setTimeout(() => {
+                            if (isSolving) {
+                                updateSolverStats();
+                            }
+                        }, 0);
+                    }
+                    
+                    const currentState = stack.pop();
+                    
+                    // 检查是否达到2048
+                    if (has2048(currentState.grid)) {
+                        return {
+                            found: true,
+                            path: currentState.path
+                        };
+                    }
+                    
+                    // 如果达到深度限制，跳过
+                    if (currentState.depth >= depthLimit) {
+                        continue;
+                    }
+                    
+                    // 生成下一步状态
+                    const nextStates = generateNextStates(currentState);
+                    
+                    // 按照启发式分数排序（分数高的先搜索）
+                    nextStates.sort((a, b) => b.score - a.score);
+                    
+                    // 将新状态加入栈中
+                    for (const nextState of nextStates) {
+                        stack.push(nextState);
+                    }
+                    
+                    // 防止单次调用时间过长
+                    if (iterations >= maxIterationsPerCall) {
+                        // 让出控制权，避免阻塞UI
+                        setTimeout(() => {
+                            if (isSolving && stack.length > 0) {
+                                // 继续搜索
+                                const result = depthLimitedSearchContinuation(stack, depthLimit);
+                                if (result) return result;
+                            }
+                        }, 0);
+                        return null; // 异步继续
+                    }
+                }
+                
+                return null;
+            }
+            
+            // 深度限制搜索的延续
+            function depthLimitedSearchContinuation(stack, depthLimit) {
+                let iterations = 0;
+                const maxIterationsPerCall = 10000;
+                
+                while (stack.length > 0 && isSolving) {
+                    iterations++;
+                    solverStats.evaluated++;
+                    
+                    // 每评估1000次更新一次UI
+                    if (solverStats.evaluated % 1000 === 0) {
+                        updateSolverStats();
+                    }
+                    
+                    const currentState = stack.pop();
+                    
+                    // 检查是否达到2048
+                    if (has2048(currentState.grid)) {
+                        return {
+                            found: true,
+                            path: currentState.path
+                        };
+                    }
+                    
+                    // 如果达到深度限制，跳过
+                    if (currentState.depth >= depthLimit) {
+                        continue;
+                    }
+                    
+                    // 生成下一步状态
+                    const nextStates = generateNextStates(currentState);
+                    
+                    // 按照启发式分数排序（分数高的先搜索）
+                    nextStates.sort((a, b) => b.score - a.score);
+                    
+                    // 将新状态加入栈中
+                    for (const nextState of nextStates) {
+                        stack.push(nextState);
+                    }
+                    
+                    // 防止单次调用时间过长
+                    if (iterations >= maxIterationsPerCall) {
+                        // 让出控制权，避免阻塞UI
+                        setTimeout(() => {
+                            if (isSolving && stack.length > 0) {
+                                depthLimitedSearchContinuation(stack, depthLimit);
+                            }
+                        }, 0);
+                        return null;
+                    }
+                }
+                
+                return null;
+            }
+            
+            // 生成下一步状态
+            function generateNextStates(state) {
+                const directions = ['up', 'down', 'left', 'right'];
+                const nextStates = [];
+                
+                for (const direction of directions) {
+                    // 复制当前状态
+                    const newGrid = state.grid.map(row => [...row]);
+                    let newScore = state.score;
+                    let moved = false;
+                    
+                    // 尝试移动
+                    moved = simulateMove(newGrid, direction, (points) => {
+                        newScore += points;
+                    });
+                    
+                    if (!moved) {
+                        continue; // 如果没有移动，跳过这个方向
+                    }
+                    
+                    // 生成所有可能的随机方块位置
+                    const emptyCells = [];
+                    for (let r = 0; r < gridSize; r++) {
+                        for (let c = 0; c < gridSize; c++) {
+                            if (newGrid[r][c] === 0) {
+                                emptyCells.push({r, c});
+                            }
+                        }
+                    }
+                    
+                    // 考虑最坏情况：在最佳位置添加4（而不是2）
+                    // 为了简化，我们只考虑添加4在最坏位置
+                    if (emptyCells.length > 0) {
+                        // 找到可能的最坏位置（靠近大数字的位置）
+                        const worstPosition = findWorstPosition(newGrid, emptyCells);
+                        
+                        // 创建新状态
+                        const worstGrid = newGrid.map(row => [...row]);
+                        worstGrid[worstPosition.r][worstPosition.c] = 4;
+                        
+                        nextStates.push({
+                            grid: worstGrid,
+                            score: newScore,
+                            path: [...state.path, direction],
+                            depth: state.depth + 1
+                        });
+                    }
+                }
+                
+                return nextStates;
+            }
+            
+            // 模拟移动（不改变原始网格）
+            function simulateMove(tempGrid, direction, scoreCallback) {
+                let moved = false;
+                
+                // 根据方向旋转网格，统一处理为向左移动
+                let rotatedGrid = rotateGridForSimulation(tempGrid, direction);
+                
+                // 移动和合并
+                for (let r = 0; r < gridSize; r++) {
+                    // 过滤掉0
+                    let row = rotatedGrid[r].filter(val => val !== 0);
+                    
+                    // 合并相同数字
+                    for (let c = 0; c < row.length - 1; c++) {
+                        if (row[c] === row[c + 1]) {
+                            row[c] *= 2;
+                            row[c + 1] = 0;
+                            if (scoreCallback) scoreCallback(row[c]);
+                            moved = true;
+                        }
+                    }
+                    
+                    // 再次过滤掉0
+                    row = row.filter(val => val !== 0);
+                    
+                    // 用0填充剩余位置
+                    while (row.length < gridSize) {
+                        row.push(0);
+                    }
+                    
+                    // 检查是否有移动
+                    if (!moved) {
+                        for (let c = 0; c < gridSize; c++) {
+                            if (rotatedGrid[r][c] !== row[c]) {
+                                moved = true;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    rotatedGrid[r] = row;
+                }
+                
+                // 旋转回原始方向并更新tempGrid
+                const resultGrid = rotateGridBackForSimulation(rotatedGrid, direction);
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        tempGrid[r][c] = resultGrid[r][c];
+                    }
+                }
+                
+                return moved;
+            }
+            
+            // 为模拟旋转网格
+            function rotateGridForSimulation(tempGrid, direction) {
+                const rotatedGrid = Array(gridSize).fill().map(() => Array(gridSize).fill(0));
+                
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        switch(direction) {
+                            case 'up':
+                                rotatedGrid[r][c] = tempGrid[c][gridSize - 1 - r];
+                                break;
+                            case 'down':
+                                rotatedGrid[r][c] = tempGrid[gridSize - 1 - c][r];
+                                break;
+                            case 'left':
+                                rotatedGrid[r][c] = tempGrid[r][c];
+                                break;
+                            case 'right':
+                                rotatedGrid[r][c] = tempGrid[r][gridSize - 1 - c];
+                                break;
+                        }
+                    }
+                }
+                
+                return rotatedGrid;
+            }
+            
+            // 为模拟旋转回网格
+            function rotateGridBackForSimulation(rotatedGrid, direction) {
+                const originalGrid = Array(gridSize).fill().map(() => Array(gridSize).fill(0));
+                
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        switch(direction) {
+                            case 'up':
+                                originalGrid[c][gridSize - 1 - r] = rotatedGrid[r][c];
+                                break;
+                            case 'down':
+                                originalGrid[gridSize - 1 - c][r] = rotatedGrid[r][c];
+                                break;
+                            case 'left':
+                                originalGrid[r][c] = rotatedGrid[r][c];
+                                break;
+                            case 'right':
+                                originalGrid[r][gridSize - 1 - c] = rotatedGrid[r][c];
+                                break;
+                        }
+                    }
+                }
+                
+                return originalGrid;
+            }
+            
+            // 找到最坏的位置（用于放置随机方块）
+            function findWorstPosition(grid, emptyCells) {
+                // 启发式：最坏的位置是能够与大数字合并的位置
+                // 但这里我们简化，返回第一个空位置
+                if (emptyCells.length === 0) return null;
+                
+                // 尽量找靠近大数字的位置
+                let maxTile = 0;
+                let maxTilePos = {r: 0, c: 0};
+                
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        if (grid[r][c] > maxTile) {
+                            maxTile = grid[r][c];
+                            maxTilePos = {r, c};
+                        }
+                    }
+                }
+                
+                // 找到离大数字最近的空位置
+                let minDistance = Infinity;
+                let worstPos = emptyCells[0];
+                
+                for (const pos of emptyCells) {
+                    const distance = Math.abs(pos.r - maxTilePos.r) + Math.abs(pos.c - maxTilePos.c);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        worstPos = pos;
+                    }
+                }
+                
+                return worstPos;
+            }
+            
+            // 检查网格中是否有2048
+            function has2048(gridToCheck) {
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        if (gridToCheck[r][c] >= 2048) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            
+            // 初始化游戏
+            initGame();
+        });
+    </script>
+
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">OTFiles</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/OTFiles"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">暂无</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Analysis-of-Software-Installation-Restrictions-on-Learning-Machines/" title="某学习平板自由安装软件——ParentManager的SQL注入漏洞">某学习平板自由安装软件——ParentManager的SQL注入漏洞</a><time datetime="2026-03-15T04:00:00.000Z" title="发表于 2026-03-15 12:00:00">2026-03-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Backrooms-level-recommendations/" title="后室层级推荐">后室层级推荐</a><time datetime="2025-08-08T11:20:05.000Z" title="发表于 2025-08-08 19:20:05">2025-08-08</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E7%A0%B4%E8%A7%A3/" style="font-size: 1.1em; color: #999">破解</a> <a href="/tags/%E7%A7%91%E6%8A%80/" style="font-size: 1.1em; color: #999">科技</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 1.1em; color: #999">安装</a> <a href="/tags/%E5%90%8E%E5%AE%A4/" style="font-size: 1.1em; color: #999">后室</a> <a href="/tags/%E5%9F%9F%E9%99%90%E7%A9%BA%E9%97%B4/" style="font-size: 1.1em; color: #999">域限空间</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/03/">
+            <span class="card-archive-list-date">
+              三月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishdate="2025-08-07T00:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastpushdate="2026-03-15T05:05:46.260Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">©&nbsp;2025 - 2026 By OTFiles</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><div class="js-pjax"></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="不许搜一些奇怪的东西哦，喵~" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div></div></div><script src="/bundle.js"></script></body></html>
